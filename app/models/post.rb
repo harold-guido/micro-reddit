@@ -1,10 +1,11 @@
 class Post < ApplicationRecord
+  belongs_to :user
+
   validates :title, 
-    exists: true, 
-    length: { maximum: 24 }
-    format: { has: /[A-Za-z ]/, message: "only allows letters"}
+    presence: true, 
+    format: { with: /[A-Za-z ]/, message: "only allows letters" }
 
   validates :body, 
-    exists: true, 
+    presence: true, 
     length: { minimum: 12 }
 end
